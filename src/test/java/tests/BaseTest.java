@@ -64,11 +64,12 @@ public class BaseTest {
             System.setProperty("webdriver.chrome.driver",resourcesRoot+"drivers\\chromedriver.exe");
 
             ChromeOptions options = new ChromeOptions();
+            options.addArguments("--incognito");
             options.addArguments("--remote-allow-origins=*");
 
            driver = new ChromeDriver(options);
 
-            System.out.println("Chrome Browser is Selected");
+            System.out.println("Chrome Browser is Selected in Incognito mode");
         }
         else if(browser.equals("firefox")){
             WebDriverManager.firefoxdriver().setup();

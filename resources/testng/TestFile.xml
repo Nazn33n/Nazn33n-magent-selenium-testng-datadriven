@@ -6,37 +6,15 @@
 
     <test name="XPATH Practice">
         <classes>
-<!--            <class name="tests.NewAccountTest">-->
-<!--            </class>-->
-                        <class name="tests.LoginTest">
-                            <methods>
-                                <include name="initiateLoginTest"/>
-                                <include name="brokenLinkTest"/>
-                            </methods>
-                        </class>
-            <!--            <class name="tests.HomeTest">-->
-            <!--                <methods>-->
-            <!--                    <include name="locatorTest"/>-->
-            <!--                    <include name="subscribeTest"/>-->
-            <!--                    <include name="alertBoxTest"/>-->
-            <!--                    <include name="comparisonTest"/>-->
-            <!--                </methods>-->
-            <!--            </class>-->
-<!--            <class name="tests.OrderPlaceTest">-->
-<!--                <methods>-->
-<!--&lt;!&ndash;                    <include name="addProductFromTop"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <include name="addProductFromBottom"/>&ndash;&gt;-->
-<!--                    <include name="addProductFromGear"/>-->
-<!--                </methods>-->
-<!--            </class>-->
-<!--            <class name="tests.ShippingMethodTest">-->
-<!--            </class>-->
-            <!--            <class name="tests.MyAccountTest">-->
-            <!--                <methods>-->
-            <!--                    <include name="ProfileTest"/>-->
-            <!--                    <include name="OrderValidationTest"/>-->
-            <!--                </methods>-->
-            <!--            </class>-->
+            <class name="tests.RegistrationTest">
+            </class>
+<!--                        <class name="tests.LoginTest">-->
+<!--                            <methods>-->
+<!--                                <include name="initiateLoginTest"/>-->
+
+<!--                            </methods>-->
+<!--                        </class>-->
+
         </classes>
     </test>
 </suite>
