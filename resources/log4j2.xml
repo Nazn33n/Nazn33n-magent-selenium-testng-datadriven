@@ -4,8 +4,8 @@
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
         </Console>
-        <RollingFile name="roll-by-time" fileName="Logs/${date:dd-MM-yyyy}/${date:dd-MM-yyyy_HH-mm-ss}.log"
-                     filePattern="Logs/%d{dd-MM-yyyy}/%d{dd-MM-yyyy_HH-mm-ss}.log"
+        <RollingFile name="roll-by-time" fileName="resources/logs/${date:dd-MM-yyyy}/${date:dd-MM-yyyy_HH-mm-ss}.log"
+                     filePattern="logs/%d{dd-MM-yyyy}/%d{dd-MM-yyyy_HH-mm-ss}.log"
                      ignoreExceptions="false"
                      append="true">
             <PatternLayout>

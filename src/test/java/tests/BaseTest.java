@@ -18,6 +18,7 @@ import pages.BasePage;
 import pages.Page;
 
 import utils.ConfigProperties;
+import utils.Log;
 
 public class BaseTest {
     private String url=null;
@@ -35,7 +36,6 @@ public class BaseTest {
 
 
     public void init() throws IOException {
-
         configProperties = new ConfigProperties();
         url = configProperties.config.getProperty("BASE_URL");
     }

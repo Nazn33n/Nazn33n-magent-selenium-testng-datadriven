@@ -25,7 +25,6 @@
             <artifactId>testng</artifactId>
             <version>7.7.1</version>
             <scope>test</scope>
-
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -37,20 +36,32 @@
             <artifactId>poi-ooxml</artifactId>
             <version>5.2.3</version>
         </dependency>
-
-
-                    <dependency>
-              <groupId>io.github.bonigarcia</groupId>
-              <artifactId>webdrivermanager</artifactId>
-              <version>3.8.1</version>
-            </dependency>
         <dependency>
-
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>3.8.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.17.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.30</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.14.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.14.1</version>
+        </dependency>
     </dependencies>
-
 </project>
