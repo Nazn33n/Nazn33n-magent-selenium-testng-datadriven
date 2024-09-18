@@ -4,8 +4,8 @@ import java.io.*;
 import java.util.Optional;
 import java.util.logging.Logger;
 
-public class Utility {
-    static Logger logger = Logger.getLogger(Utility.class.getName());
+public class RandomEmail {
+    static Logger logger = Logger.getLogger(RandomEmail.class.getName());
 
     public String getEmail() throws IOException {
         String email_template = "Nazara#@yopmail.com";
