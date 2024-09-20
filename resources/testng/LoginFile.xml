@@ -6,15 +6,13 @@
 
     <test name="XPATH Practice">
         <classes>
-            <class name="tests.RegistrationTest">
+            <class name="tests.LoginTest">
+                <methods>
+                    <include name="initiateLoginTest"/>
+                </methods>
             </class>
-<!--                        <class name="tests.LoginTest">-->
-<!--                            <methods>-->
-<!--                                <include name="initiateLoginTest"/>-->
-
-<!--                            </methods>-->
-<!--                        </class>-->
-
+            <class name="tests.BillingAddressTest">
+            </class>
         </classes>
     </test>
 </suite>
