@@ -7,16 +7,19 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import pages.LoginPage;
 import pages.Page;
 import pages.RegistrationPage;
-import utils.RandomEmail;
 import utils.ReadExcel;
 import utils.Log;
+import utils.WriteExcel;
 
 import java.io.IOException;
 
 public class RegistrationTest extends BaseTest {
+
+    private final String filePath = "resources\\testdata\\ExcelFiles\\Reg_data.xlsx";
+    private final String sheetName = "Data";
+
     WebDriver driver;
     Page page;
 
@@ -32,13 +35,16 @@ public class RegistrationTest extends BaseTest {
 
     @DataProvider(name = "registrationExcelData")
     public Object[][] readExcelData() throws IOException {
-        String filePath = "resources\\testdata\\ExcelFiles\\Reg_data.xlsx";
-        String sheetName = "Sheet1";
         return ReadExcel.getExcelData(filePath, sheetName);
     }
 
+    @Test
+    public void writeExcelData() throws IOException {
+        WriteExcel.writeExcelData(filePath, sheetName);
+    }
+
     @Test(dataProvider = "registrationExcelData")
-    public void registerUser(String firstName, String lastName, String emailAddress, String pwd, String confirmPwd) throws IOException {
+    public void registerUser(String firstName, String lastName, String pwd, String confirmPwd, String emailAddress) {
         SoftAssert softAssert = new SoftAssert();
         page.getInstance(RegistrationPage.class).getNewAccountLink().click();
         page.getInstance(RegistrationPage.class).getFirstName().clear();

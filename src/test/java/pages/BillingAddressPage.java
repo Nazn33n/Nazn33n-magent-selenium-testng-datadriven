@@ -14,10 +14,11 @@ public class BillingAddressPage extends BasePage {
     private By phoneNumber = By.id("telephone");
     private By addressOne = By.id("street_1");
     private By cityName = By.id("city");
-        private By stateDropdown = By.id("region_id");
+    private By stateDropdown = By.id("region_id");
     private By zipCode = By.id("zip");
     private By saveAddressButton = By.cssSelector("button[title='Save Address']");
-    private By openMenu2 = By.xpath("*//header/div[1]//ul/li[2]//button");
+    private By text = By.xpath("//*[@id=\"maincontent\"]/div[2]/div[1]/div[3]/div[2]/div[1]/div[1]/address");
+    private By openMenu2 = By.xpath("*//header//ul/li[2]//button");
     private By clickSignOut = By.partialLinkText("Sign Out");
 
 
@@ -56,6 +57,9 @@ public class BillingAddressPage extends BasePage {
     }
 
     public WebElement getSaveAddressButton() {
+        return elementWithWait(saveAddressButton, "clickable");
+    }
+    public WebElement getinfoText() {
         return elementWithWait(saveAddressButton, "clickable");
     }
 

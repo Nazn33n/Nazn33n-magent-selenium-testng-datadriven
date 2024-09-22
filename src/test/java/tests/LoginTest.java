@@ -11,6 +11,9 @@ import java.io.IOException;
 
 public class LoginTest extends BaseTest {
 
+    private final String filePath = "resources\\testdata\\ExcelFiles\\Reg_data.xlsx";
+    private final String sheetName = "Data";
+
     WebDriver driver;
     Page page;
 
@@ -27,17 +30,15 @@ public class LoginTest extends BaseTest {
 
     @DataProvider(name = "loginExcelData")
     public Object[][] readExcelData() throws IOException {
-        String filePath = "resources\\testdata\\ExcelFiles\\Login_data.xlsx";
-        String sheetName = "Sheet1";
-        return ReadExcel.getExcelData(filePath, sheetName);
+        return ReadExcel.getExcelDataFirstRow(filePath, sheetName);
     }
 
     @Test(dataProvider = "loginExcelData")
-    public void initiateLoginTest(String email, String password) throws InterruptedException {
+    public void initiateLoginTest(String firstName, String lastName, String pwd, String confirmPwd, String emailAddress) throws InterruptedException {
         System.out.println("Test start ...........");
         page.getInstance(LoginPage.class).getSignInLink().click();
-        page.getInstance(LoginPage.class).getLoginEmail().sendKeys(email);
-        page.getInstance(LoginPage.class).getLoginPassword().sendKeys(password);
+        page.getInstance(LoginPage.class).getLoginEmail().sendKeys(emailAddress);
+        page.getInstance(LoginPage.class).getLoginPassword().sendKeys(pwd);
         page.getInstance(LoginPage.class).getLoginSubmitButton().click();
         Thread.sleep(3000);
         page.getInstance(LoginPage.class).getOpenMenus().click();

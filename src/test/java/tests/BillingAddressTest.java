@@ -1,6 +1,7 @@
 package tests;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -46,11 +47,14 @@ public class BillingAddressTest extends BaseTest {
         page.getInstance(BillingAddressPage.class).getAddressOne().sendKeys(addressName);
         page.getInstance(BillingAddressPage.class).getCityName().sendKeys(cityName);
         Select selectRegion = new Select(page.getInstance(BillingAddressPage.class).getRegionDropdown());
-        selectRegion.selectByIndex(2);
+        selectRegion.selectByValue("Alaska");
         page.getInstance(BillingAddressPage.class).getZipCode().sendKeys(zipCode);
-//        page.getInstance(BillingAddressPage.class).getSaveAddressButton().click();
-        Log.info("Excel Data Used----------------------------------: " + company + " " + phoneNumber + " " + addressName + " " + cityName + " " + state+ " " + zipCode);
+//       page.getInstance(BillingAddressPage.class).getSaveAddressButton().click();
 
+        Log.info("Excel Data Used----------------------------------: " + company + " " + phoneNumber + " " + addressName + " " + cityName + " " + state+ " " + zipCode);
+       WebElement lala = page.getInstance(BillingAddressPage.class).getinfoText();
+       lala.getText();
+        System.out.println(lala);
     }
 
 }

@@ -5,11 +5,10 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 public class RandomEmail {
+
     static Logger logger = Logger.getLogger(RandomEmail.class.getName());
 
-    public String getEmail() throws IOException {
-        String email_template = "Nazara#@yopmail.com";
-
+    public static String getEmail(String template) throws IOException {
         String filename = "email_serial.txt";
 
         // read serial
@@ -22,7 +21,7 @@ public class RandomEmail {
         Integer newSerial = Optional.ofNullable(serial)
                 .map(Integer::parseInt)
                 .orElse(0) + 1;
-        String email = email_template.replace("#", String.valueOf(newSerial));
+        String email = template.replace("#", String.valueOf(newSerial));
         logger.info(email);
 
         // write serial

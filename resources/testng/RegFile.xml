@@ -7,6 +7,10 @@
     <test name="XPATH Practice">
         <classes>
             <class name="tests.RegistrationTest">
+                <methods>
+                    <include name="writeExcelData"/>
+                    <include name="registerUser"/>
+                </methods>
             </class>
         </classes>
     </test>

@@ -9,6 +9,12 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class ReadExcel {
+
+    public static Object[][] getExcelDataFirstRow(String filePath, String sheetName) throws IOException {
+        Object[][] originalData = getExcelData(filePath, sheetName);
+        return Arrays.copyOfRange(originalData, 0, 1);
+    }
+
     public static Object[][] getExcelData(String filePath, String sheetName) throws IOException {
         FileInputStream fis = new FileInputStream(filePath);
         XSSFWorkbook workbook = new XSSFWorkbook(fis);
