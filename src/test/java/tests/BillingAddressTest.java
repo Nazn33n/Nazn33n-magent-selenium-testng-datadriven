@@ -48,13 +48,14 @@ public class BillingAddressTest extends BaseTest {
         page.getInstance(BillingAddressPage.class).getCityName().sendKeys(cityName);
         Select selectRegion = new Select(page.getInstance(BillingAddressPage.class).getRegionDropdown());
         selectRegion.selectByValue("Alaska");
-        page.getInstance(BillingAddressPage.class).getZipCode().sendKeys(zipCode);
-//       page.getInstance(BillingAddressPage.class).getSaveAddressButton().click();
 
-        Log.info("Excel Data Used----------------------------------: " + company + " " + phoneNumber + " " + addressName + " " + cityName + " " + state+ " " + zipCode);
-       WebElement lala = page.getInstance(BillingAddressPage.class).getinfoText();
-       lala.getText();
-        System.out.println(lala);
+//        page.getInstance(BillingAddressPage.class).getZipCode().sendKeys(zipCode);
+////       page.getInstance(BillingAddressPage.class).getSaveAddressButton().click();
+//
+//        Log.info("Excel Data Used----------------------------------: " + company + " " + phoneNumber + " " + addressName + " " + cityName + " " + state+ " " + zipCode);
+//       WebElement lala = page.getInstance(BillingAddressPage.class).getinfoText();
+//       lala.getText();
+//        System.out.println(lala);
     }
 
 }

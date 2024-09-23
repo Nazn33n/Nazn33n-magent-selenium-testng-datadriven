@@ -44,7 +44,7 @@ public class RegistrationTest extends BaseTest {
     }
 
     @Test(dataProvider = "registrationExcelData")
-    public void registerUser(String firstName, String lastName, String pwd, String confirmPwd, String emailAddress) {
+    public void registerUser(String firstName, String lastName, String password, String confirmPassword, String emailAddress) {
         SoftAssert softAssert = new SoftAssert();
         page.getInstance(RegistrationPage.class).getNewAccountLink().click();
         page.getInstance(RegistrationPage.class).getFirstName().clear();
@@ -57,10 +57,10 @@ public class RegistrationTest extends BaseTest {
         page.getInstance(RegistrationPage.class).getEmailAddress().sendKeys(emailAddress);
 
         page.getInstance(RegistrationPage.class).getPassword().clear();
-        page.getInstance(RegistrationPage.class).getPassword().sendKeys(pwd);
+        page.getInstance(RegistrationPage.class).getPassword().sendKeys(password);
 
         page.getInstance(RegistrationPage.class).getPasswordConfirmation().clear();
-        page.getInstance(RegistrationPage.class).getPasswordConfirmation().sendKeys(confirmPwd);
+        page.getInstance(RegistrationPage.class).getPasswordConfirmation().sendKeys(confirmPassword);
 
         page.getInstance(RegistrationPage.class).getSubmitButton().click();
 
