@@ -44,7 +44,20 @@ public class RegistrationTest extends BaseTest {
     }
 
     @Test(dataProvider = "registrationExcelData")
-    public void registerUser(String firstName, String lastName, String password, String confirmPassword, String emailAddress) {
+    public void registerUser(String firstName,
+                             String lastName,
+                             String emailAddress,
+                             String password,
+                             String confirmPassword,
+                             String company,
+                             String phoneNumber,
+                             String streetAddress,
+                             String city,
+                             String state,
+                             String zipCode,
+                             String clothCategory,
+                             String size,
+                             String color) {
         SoftAssert softAssert = new SoftAssert();
         page.getInstance(RegistrationPage.class).getNewAccountLink().click();
         page.getInstance(RegistrationPage.class).getFirstName().clear();
@@ -78,6 +91,7 @@ public class RegistrationTest extends BaseTest {
             System.out.println("There is no second line.");
         }
         page.getInstance(RegistrationPage.class).getOpenMenus2().click();
+//        page.getInstance(RegistrationPage.class).getSignOut().click();
         page.getInstance(RegistrationPage.class).getSignOut().click();
     }
 }

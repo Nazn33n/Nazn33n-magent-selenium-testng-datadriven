@@ -34,15 +34,27 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(dataProvider = "loginExcelData")
-    public void initiateLoginTest(String firstName, String lastName, String pwd, String confirmPwd, String emailAddress) throws InterruptedException {
+    public void initiateLoginTest(String firstName,
+                                  String lastName,
+                                  String emailAddress,
+                                  String password,
+                                  String confirmPassword,
+                                  String company,
+                                  String phoneNumber,
+                                  String streetAddress,
+                                  String city,
+                                  String state,
+                                  String zipCode,
+                                  String clothCategory,
+                                  String size,
+                                  String color) throws InterruptedException {
         System.out.println("Test start ...........");
         page.getInstance(LoginPage.class).getSignInLink().click();
         page.getInstance(LoginPage.class).getLoginEmail().sendKeys(emailAddress);
-        page.getInstance(LoginPage.class).getLoginPassword().sendKeys(pwd);
+        page.getInstance(LoginPage.class).getLoginPassword().sendKeys(password);
         page.getInstance(LoginPage.class).getLoginSubmitButton().click();
         Thread.sleep(3000);
         page.getInstance(LoginPage.class).getOpenMenus().click();
-//        page.getInstance(LoginPage.class).getMyAccount().click();
         page.getInstance(LoginPage.class).getMyAccount().click();
     }
 }

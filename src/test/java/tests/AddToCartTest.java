@@ -42,7 +42,20 @@ public class AddToCartTest extends BaseTest {
     }
 
     @Test(dataProvider = "loginExcelData")
-    public void loginTest(String firstName, String lastName, String password, String confirmPassword, String emailAddress, String clothCategory, String size, String color) {
+    public void loginTest(String firstName,
+                          String lastName,
+                          String emailAddress,
+                          String password,
+                          String confirmPassword,
+                          String company,
+                          String phoneNumber,
+                          String streetAddress,
+                          String city,
+                          String state,
+                          String zipCode,
+                          String clothCategory,
+                          String size,
+                          String color) {
 
         System.out.println("Test start ...........");
         page.getInstance(AddToCartPage.class).getSignInLink().click();

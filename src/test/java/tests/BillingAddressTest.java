@@ -14,6 +14,8 @@ import utils.ReadExcel;
 import java.io.IOException;
 
 public class BillingAddressTest extends BaseTest {
+    private final String filePath = "resources\\testdata\\ExcelFiles\\Reg_data.xlsx";
+    private final String sheetName = "Data";
 
     WebDriver driver;
     Page page;
@@ -33,28 +35,37 @@ public class BillingAddressTest extends BaseTest {
 
     @DataProvider(name = "billingExcelData")
     public Object[][] readExcelData() throws IOException {
-        String filePath = "resources\\testdata\\ExcelFiles\\Billing_data.xlsx";
-        String sheetName = "Sheet1";
         return ReadExcel.getExcelData(filePath, sheetName);
     }
 
     @Test(dataProvider = "billingExcelData")
-    public void addBillingAddressTest(String company, String phoneNumber, String addressName, String cityName, String state, String zipCode) {
-
+    public void addBillingAddressTest(String firstName,
+                                      String lastName,
+                                      String emailAddress,
+                                      String password,
+                                      String confirmPassword,
+                                      String company,
+                                      String phoneNumber,
+                                      String streetAddress,
+                                      String city,
+                                      String state,
+                                      String zipCode,
+                                      String clothCategory,
+                                      String size,
+                                      String color) {
         page.getInstance(BillingAddressPage.class).getEditAddressLink().click();
         page.getInstance(BillingAddressPage.class).getCompanyName().sendKeys(company);
         page.getInstance(BillingAddressPage.class).getPhoneNumber().sendKeys(phoneNumber);
-        page.getInstance(BillingAddressPage.class).getAddressOne().sendKeys(addressName);
-        page.getInstance(BillingAddressPage.class).getCityName().sendKeys(cityName);
-        Select selectRegion = new Select(page.getInstance(BillingAddressPage.class).getRegionDropdown());
-        selectRegion.selectByValue("Alaska");
+        page.getInstance(BillingAddressPage.class).getAddressOne().sendKeys(streetAddress);
+        page.getInstance(BillingAddressPage.class).getCityName().sendKeys(city);
+        page.getInstance(BillingAddressPage.class).getRegionDropdown().sendKeys(state);
 
-//        page.getInstance(BillingAddressPage.class).getZipCode().sendKeys(zipCode);
-////       page.getInstance(BillingAddressPage.class).getSaveAddressButton().click();
-//
-//        Log.info("Excel Data Used----------------------------------: " + company + " " + phoneNumber + " " + addressName + " " + cityName + " " + state+ " " + zipCode);
-//       WebElement lala = page.getInstance(BillingAddressPage.class).getinfoText();
-//       lala.getText();
+        page.getInstance(BillingAddressPage.class).getZipCode().sendKeys(zipCode);
+       page.getInstance(BillingAddressPage.class).getSaveAddressButton().click();
+
+//        Log.info("Excel Data Used----------------------------------: " + company + " " + phoneNumber + " " + streetAddress + " " + city + " " + state + " " + zipCode);
+//        WebElement lala = page.getInstance(BillingAddressPage.class).getinfoText();
+//        lala.getText();
 //        System.out.println(lala);
     }
 

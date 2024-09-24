@@ -25,7 +25,7 @@ public class WriteExcel {
             }
         }
 
-        String[] headerRow = new String[]{"First Name", "Last Name", "Password", "Confirm Password", "Email"};
+        String[] headerRow = new String[]{"First Name", "Last Name", "Email", "Password", "Confirm Password"};
         int colCount = headerRow.length;
         for (int i = 0; i < colCount; i++) {
             sheet.getRow(0).createCell(i).setCellValue(headerRow[i]);
@@ -37,9 +37,10 @@ public class WriteExcel {
             String[] bodyRow = new String[]{
                     faker.name().firstName(),
                     faker.name().lastName(),
+                    RandomEmail.getEmail("Nazz#@yopmail.com"),
                     password,
                     password,
-                    RandomEmail.getEmail("Nazz#@yopmail.com")
+
             };
             for (int j = 0; j < colCount; j++) {
                 sheet.getRow(i).createCell(j).setCellValue(bodyRow[j]);
