@@ -59,6 +59,7 @@ public class BillingAddressPage extends BasePage {
     public WebElement getSaveAddressButton() {
         return elementWithWait(saveAddressButton, "clickable");
     }
+
     public WebElement getinfoText() {
         return elementWithWait(saveAddressButton, "clickable");
     }

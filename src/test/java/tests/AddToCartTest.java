@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -12,10 +13,11 @@ import pages.Page;
 import utils.ReadExcel;
 
 import java.io.IOException;
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import static utils.Constant.success_message;
 
 public class AddToCartTest extends BaseTest {
 
@@ -36,6 +38,8 @@ public class AddToCartTest extends BaseTest {
         page = BaseTest.page;
     }
 
+    List<String> orderIds = new ArrayList<>();
+
     @DataProvider(name = "loginExcelData")
     public Object[][] readExcelData() throws IOException {
         return ReadExcel.getExcelDataFirstRow(filePath, sheetName);
@@ -55,7 +59,7 @@ public class AddToCartTest extends BaseTest {
                           String zipCode,
                           String clothCategory,
                           String size,
-                          String color) {
+                          String color) throws Exception {
 
         System.out.println("Test start ...........");
         page.getInstance(AddToCartPage.class).getSignInLink().click();
@@ -67,17 +71,39 @@ public class AddToCartTest extends BaseTest {
         int menuCount = menuList.length;
         for (int i = 0; i < menuCount - 1; i++) {
             Actions actions = new Actions(driver);
-            WebElement menu = page.getInstance(AddToCartPage.class).getHoverMenu(menuList[i]);
+            WebElement menu = page.getInstance(AddToCartPage.class).getByLinkText(menuList[i]);
             actions.moveToElement(menu).perform();
         }
-        page.getInstance(AddToCartPage.class).getHoverMenu(menuList[menuCount - 1]).click();
+        page.getInstance(AddToCartPage.class).getByLinkText(menuList[menuCount - 1]).click();
 
         List<WebElement> products = driver.findElements(By.cssSelector(".product-item-name a"));
-        Random random = new Random();
-        WebElement product = products.get(random.nextInt(products.size()));
+//      Random random = new Random();
+//      WebElement product = products.get(random.nextInt(products.size()));
+        WebElement product = products.get(0);
         product.click();
 
+        page.getInstance(AddToCartPage.class).getButtonByOptionLabel(size).click();
+        page.getInstance(AddToCartPage.class).getButtonByOptionLabel(color).click();
 
+        WebElement cartButton = driver.findElement(By.xpath("//*[@id=\"product-addtocart-button\"]"));
+        cartButton.click();
 
+        page.getInstance(AddToCartPage.class).getByLinkText("shopping cart").click();
+        Thread.sleep(3000);
+        page.getInstance(AddToCartPage.class).getCheckoutButton().click();
+        page.getInstance(AddToCartPage.class).getShipRadioButton().click();
+        page.getInstance(AddToCartPage.class).getShippingNextButton().click();
+
+        Thread.sleep(3000);
+//      page.getInstance(AddToCartPage.class).getShippingCheckBox().click();
+        page.getInstance(AddToCartPage.class).getShippingPlaceOrderButton().click();
+
+        String actualText = page.getInstance(AddToCartPage.class).getShippingSuccessMsg().getText();
+        Assert.assertEquals(actualText, success_message);
+        System.out.println(success_message);
+        takeScreenshot("ss2");
+        String orderCompletionID = page.getInstance(AddToCartPage.class).getOrderCompletionId().getText();
+        orderIds.add(orderCompletionID);
+        System.out.println(orderCompletionID);
     }
 }

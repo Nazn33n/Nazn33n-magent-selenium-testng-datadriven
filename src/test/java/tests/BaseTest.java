@@ -18,11 +18,11 @@ import pages.BasePage;
 import pages.Page;
 
 import utils.ConfigProperties;
-import utils.Log;
+
 
 public class BaseTest {
-    private String url=null;
-    private String urlType=null;
+    private String url = null;
+    private String urlType = null;
     public static WebDriver driver;
     public static String resourcesRoot = "./resources/";// Set Path f resources
     FluentWait wait;
@@ -30,7 +30,7 @@ public class BaseTest {
     private static ConfigProperties configProperties;
     public static String baseUrl;
 
-    public BaseTest(String urlType){
+    public BaseTest(String urlType) {
         this.urlType = urlType;
     }
 
@@ -41,14 +41,12 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    public void beforeMethod(Method method)
-    {
+    public void beforeMethod(Method method) {
 //        Allure.addAttachment(method.getName(), screenshot());
     }
 
     @AfterMethod
-    public void afterMethod(Method method)
-    {
+    public void afterMethod(Method method) {
 //        tearDown();
 //        Allure.addAttachment(method.getName(),screenshot());
     }
@@ -60,23 +58,21 @@ public class BaseTest {
 
         init();
 
-        if (browser.equals("chrome")){
-            System.setProperty("webdriver.chrome.driver",resourcesRoot+"drivers\\chromedriver.exe");
+        if (browser.equals("chrome")) {
+            System.setProperty("webdriver.chrome.driver", resourcesRoot + "drivers\\chromedriver_129.exe");
 
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--incognito");
             options.addArguments("--remote-allow-origins=*");
 
-           driver = new ChromeDriver(options);
+            driver = new ChromeDriver(options);
 
             System.out.println("Chrome Browser is Selected in Incognito mode");
-        }
-        else if(browser.equals("firefox")){
+        } else if (browser.equals("firefox")) {
             WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
             System.out.println("Mozila Firefox Browser is Selected");
-        }
-        else{
+        } else {
             WebDriverManager.edgedriver().setup();
             driver = new EdgeDriver();
             System.out.println("Edge Browser is Selected");
@@ -92,7 +88,8 @@ public class BaseTest {
         wait.withTimeout(Duration.ofSeconds(Long.valueOf(configProperties.config.getProperty("TIMEOUT_IN_SECONDS"))));
         wait.withTimeout(Duration.ofSeconds(Long.valueOf(configProperties.config.getProperty("POLLING_IN_MILISECONDS"))));
     }
-//
+
+    //
 //        public void popupHandle() throws NoSuchElementException{
 //
 //        //Popup handle
@@ -105,13 +102,14 @@ public class BaseTest {
 //        }
 //
 //
-    public void takeScreenshot(String filePath) throws Exception{
+    public void takeScreenshot(String filePath) throws Exception {
         TakesScreenshot screenshot = ((TakesScreenshot) driver);
         File srcFile = screenshot.getScreenshotAs(OutputType.FILE);
-        File destinationFile = new File(filePath+".png");
-        FileUtils.copyFile(srcFile,destinationFile);
-  }
-    public void tearDown(){
+        File destinationFile = new File(filePath + ".png");
+        FileUtils.copyFile(srcFile, destinationFile);
+    }
+
+    public void tearDown() {
         driver.quit();
 
     }

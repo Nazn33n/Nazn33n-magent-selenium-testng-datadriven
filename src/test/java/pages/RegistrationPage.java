@@ -52,10 +52,17 @@ public class RegistrationPage extends BasePage {
         return elementWithWait(submitButton, "clickable");
 
     }
+
     public WebElement getUserNameTxt() {
         return elementWithWait(userName, "presence");
     }
-    public WebElement getOpenMenus2() {return elementWithWait(openMenu2, "clickable");}
-    public WebElement getSignOut() {return elementWithWait(clickSignOut, "clickable");}
+
+    public WebElement getOpenMenus2() {
+        return elementWithWait(openMenu2, "clickable");
+    }
+
+    public WebElement getSignOut() {
+        return elementWithWait(clickSignOut, "clickable");
+    }
 
 }

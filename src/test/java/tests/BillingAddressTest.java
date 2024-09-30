@@ -8,7 +8,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.BillingAddressPage;
 import pages.Page;
-import utils.Log;
 import utils.ReadExcel;
 
 import java.io.IOException;
@@ -59,9 +58,8 @@ public class BillingAddressTest extends BaseTest {
         page.getInstance(BillingAddressPage.class).getAddressOne().sendKeys(streetAddress);
         page.getInstance(BillingAddressPage.class).getCityName().sendKeys(city);
         page.getInstance(BillingAddressPage.class).getRegionDropdown().sendKeys(state);
-
         page.getInstance(BillingAddressPage.class).getZipCode().sendKeys(zipCode);
-       page.getInstance(BillingAddressPage.class).getSaveAddressButton().click();
+        page.getInstance(BillingAddressPage.class).getSaveAddressButton().click();
 
 //        Log.info("Excel Data Used----------------------------------: " + company + " " + phoneNumber + " " + streetAddress + " " + city + " " + state + " " + zipCode);
 //        WebElement lala = page.getInstance(BillingAddressPage.class).getinfoText();
