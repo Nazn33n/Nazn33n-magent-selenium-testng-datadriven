@@ -1,14 +1,18 @@
 package tests;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.AddToCartPage;
+import pages.BillingAddressPage;
 import pages.Page;
 import utils.ReadExcel;
 
@@ -21,7 +25,7 @@ import static utils.Constant.success_message;
 
 public class AddToCartTest extends BaseTest {
 
-    private final String filePath = "resources\\testdata\\ExcelFiles\\Reg_data.xlsx";
+    private final String filePath = "resources\\testdata\\ExcelFiles\\Test_data.xlsx";
     private final String sheetName = "Data";
 
     WebDriver driver;
@@ -58,8 +62,8 @@ public class AddToCartTest extends BaseTest {
                           String state,
                           String zipCode,
                           String clothCategory,
-                          String size,
-                          String color) throws Exception {
+                          String size) throws Exception {
+        SoftAssert softAssert = new SoftAssert();
 
         System.out.println("Test start ...........");
         page.getInstance(AddToCartPage.class).getSignInLink().click();
@@ -76,34 +80,39 @@ public class AddToCartTest extends BaseTest {
         }
         page.getInstance(AddToCartPage.class).getByLinkText(menuList[menuCount - 1]).click();
 
+
+        //Random Product
         List<WebElement> products = driver.findElements(By.cssSelector(".product-item-name a"));
-//      Random random = new Random();
-//      WebElement product = products.get(random.nextInt(products.size()));
-        WebElement product = products.get(0);
+        Random random = new Random();
+        WebElement product = products.get(random.nextInt(products.size()));
         product.click();
 
         page.getInstance(AddToCartPage.class).getButtonByOptionLabel(size).click();
-        page.getInstance(AddToCartPage.class).getButtonByOptionLabel(color).click();
 
-        WebElement cartButton = driver.findElement(By.xpath("//*[@id=\"product-addtocart-button\"]"));
-        cartButton.click();
+        //Random Color
+        List<WebElement> colorOptions = driver.findElements(By.cssSelector(".swatch-option.color"));
+        Random random1 = new Random();
+        WebElement color = colorOptions.get(random1.nextInt(colorOptions.size()));
+        color.click();
 
+        page.getInstance(AddToCartPage.class).getAddToCart().click();
         page.getInstance(AddToCartPage.class).getByLinkText("shopping cart").click();
-        Thread.sleep(3000);
         page.getInstance(AddToCartPage.class).getCheckoutButton().click();
         page.getInstance(AddToCartPage.class).getShipRadioButton().click();
-        page.getInstance(AddToCartPage.class).getShippingNextButton().click();
-
-        Thread.sleep(3000);
-//      page.getInstance(AddToCartPage.class).getShippingCheckBox().click();
-        page.getInstance(AddToCartPage.class).getShippingPlaceOrderButton().click();
-
+        Thread.sleep(6000);
+        page.getInstance(AddToCartPage.class).getShippingNextButton().submit();
+        WebElement proceedButton = page.getInstance(AddToCartPage.class).getShippingPlaceOrderButton();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", proceedButton);
         String actualText = page.getInstance(AddToCartPage.class).getShippingSuccessMsg().getText();
-        Assert.assertEquals(actualText, success_message);
+        softAssert.assertEquals(actualText, success_message);
         System.out.println(success_message);
         takeScreenshot("ss2");
         String orderCompletionID = page.getInstance(AddToCartPage.class).getOrderCompletionId().getText();
         orderIds.add(orderCompletionID);
         System.out.println(orderCompletionID);
+        page.getInstance(AddToCartPage.class).getOpenMenus2().click();
+        page.getInstance(AddToCartPage.class).getSignOut().click();
+        driver.quit();
     }
 }

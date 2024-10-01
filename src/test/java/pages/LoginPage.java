@@ -20,27 +20,10 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public WebElement getSignInLink() {
-        return elementWithWait(signInLink, "clickable");
-    }
-
-    public WebElement getLoginEmail() {
-        return elementWithWait(loginEmail, "presence");
-    }
-
-    public WebElement getLoginPassword() {
-        return elementWithWait(loginPassword, "presence");
-    }
-
-    public WebElement getLoginSubmitButton() {
-        return elementWithWait(loginSubmitButton, "clickable");
-    }
-
-    public WebElement getOpenMenus() {
-        return elementWithWait(openMenu, "clickable");
-    }
-
-    public WebElement getMyAccount() {
-        return elementWithWait(clickMyAccount, "clickable");
-    }
+    public WebElement getSignInLink() {return elementWithWait(signInLink, "clickable");}
+    public WebElement getLoginEmail() {return elementWithWait(loginEmail, "presence");}
+    public WebElement getLoginPassword() {return elementWithWait(loginPassword, "presence");}
+    public WebElement getLoginSubmitButton() {return elementWithWait(loginSubmitButton, "clickable");}
+    public WebElement getOpenMenus() {return elementWithWait(openMenu, "clickable");}
+    public WebElement getMyAccount() {return elementWithWait(clickMyAccount, "clickable");}
 }

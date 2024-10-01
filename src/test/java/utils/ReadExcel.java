@@ -36,12 +36,8 @@ public class ReadExcel {
             }
             System.out.println(Arrays.deepToString(data));
         }
-
         workbook.close();
         fis.close();
-
         return data;
     }
-
-
 }

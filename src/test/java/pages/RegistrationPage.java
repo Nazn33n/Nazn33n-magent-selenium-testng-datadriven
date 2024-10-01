@@ -24,45 +24,15 @@ public class RegistrationPage extends BasePage {
         super(driver);
     }
 
-    public WebElement getNewAccountLink() {
-        return elementWithWait(newAccount, "clickable");
-    }
-
-    public WebElement getFirstName() {
-        return elementWithWait(firstName, "presence");
-    }
-
-    public WebElement getLastName() {
-        return elementWithWait(lastName, "presence");
-    }
-
-    public WebElement getEmailAddress() {
-        return elementWithWait(emailAddress, "presence");
-    }
-
-    public WebElement getPassword() {
-        return elementWithWait(inputPassword, "presence");
-    }
-
-    public WebElement getPasswordConfirmation() {
-        return elementWithWait(passwordConfirmation, "presence");
-    }
-
-    public WebElement getSubmitButton() {
-        return elementWithWait(submitButton, "clickable");
-
-    }
-
-    public WebElement getUserNameTxt() {
-        return elementWithWait(userName, "presence");
-    }
-
-    public WebElement getOpenMenus2() {
-        return elementWithWait(openMenu2, "clickable");
-    }
-
-    public WebElement getSignOut() {
-        return elementWithWait(clickSignOut, "clickable");
-    }
+    public WebElement getNewAccountLink() {return elementWithWait(newAccount, "clickable");}
+    public WebElement getFirstName() {return elementWithWait(firstName, "presence");}
+    public WebElement getLastName() {return elementWithWait(lastName, "presence");}
+    public WebElement getEmailAddress() {return elementWithWait(emailAddress, "presence");}
+    public WebElement getPassword() {return elementWithWait(inputPassword, "presence");}
+    public WebElement getPasswordConfirmation() {return elementWithWait(passwordConfirmation, "presence");}
+    public WebElement getSubmitButton() {return elementWithWait(submitButton, "clickable");}
+    public WebElement getUserNameTxt() {return elementWithWait(userName, "presence");}
+    public WebElement getOpenMenus2() {return elementWithWait(openMenu2, "clickable");}
+    public WebElement getSignOut() {return elementWithWait(clickSignOut, "clickable");}
 
 }

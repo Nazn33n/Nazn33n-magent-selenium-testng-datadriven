@@ -7,11 +7,12 @@ import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.Page;
 import utils.ReadExcel;
+
 import java.io.IOException;
 
 public class LoginTest extends BaseTest {
 
-    private final String filePath = "resources\\testdata\\ExcelFiles\\Reg_data.xlsx";
+    private final String filePath = "resources\\testdata\\ExcelFiles\\Test_data.xlsx";
     private final String sheetName = "Data";
 
     WebDriver driver;
@@ -46,8 +47,8 @@ public class LoginTest extends BaseTest {
                                   String state,
                                   String zipCode,
                                   String clothCategory,
-                                  String size,
-                                  String color) throws InterruptedException {
+                                  String size
+    ) throws InterruptedException {
         System.out.println("Test start ...........");
         page.getInstance(LoginPage.class).getSignInLink().click();
         page.getInstance(LoginPage.class).getLoginEmail().sendKeys(emailAddress);

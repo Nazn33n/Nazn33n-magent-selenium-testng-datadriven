@@ -62,7 +62,7 @@ public class BaseTest {
             System.setProperty("webdriver.chrome.driver", resourcesRoot + "drivers\\chromedriver_129.exe");
 
             ChromeOptions options = new ChromeOptions();
-            options.addArguments("--incognito");
+//            options.addArguments("--incognito");
             options.addArguments("--remote-allow-origins=*");
 
             driver = new ChromeDriver(options);

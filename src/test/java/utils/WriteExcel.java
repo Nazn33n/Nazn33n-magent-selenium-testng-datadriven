@@ -16,7 +16,7 @@ public class WriteExcel {
         XSSFWorkbook workbook = new XSSFWorkbook(fis);
         XSSFSheet sheet = workbook.getSheet(sheetName);
 
-        int rowCount = 2;
+        int rowCount = 5;
 
         // create empty rows
         for (int i = 0; i <= rowCount; i++) {
